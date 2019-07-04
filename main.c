@@ -9,6 +9,9 @@
 #define USART0SendByte(x) printf(" = %u",(x))
 void USART0Init(void);
 int USART00SendByte(char u8Data, FILE *stream);
+#define USART_BAUDRATE 9600 
+#define UBRR_VALUE (((F_CPU / (USART_BAUDRATE * 16UL))) - 1)
+
 int USART00ReceiveByte(FILE *stream);
 FILE usart0_str = FDEV_SETUP_STREAM(USART00SendByte, USART00ReceiveByte, _FDEV_SETUP_RW);
 
